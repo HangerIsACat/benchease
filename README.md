@@ -19,7 +19,7 @@ To build a docker image from BenchEase's DockerFile and run its container...
 _**Note**_: Commands are primarily for Debian Linux. 
 
 1. Pull this project or get the DockerFile via wget. 
-`wget https://github.com/HangerIsACat/benchease/blob/docker/DockerFile` 
+`wget https://github.com/HangerIsACat/benchease/blob/main/docker/Dockerfile` 
 
 2. Build a docker image from the DockerFile. 
 `docker image build .` 
