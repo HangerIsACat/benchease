@@ -6,7 +6,7 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 
 **Run**: `./gradlew bootRun`
 
-**Debug**: `./gradlew bootRun --debug-jvm`
+**Debug** (runs at port 5005): `./gradlew bootRun --debug-jvm`
 
 ### Sample API
 **Hello, world!** [http://localhost:8080/sample/hello](http://localhost:8080/sample/hello)
