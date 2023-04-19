@@ -15,6 +15,7 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 
 ## Docker container setup
 To build a docker image from BenchEase's DockerFile and run its container... 
+
 _**Note**_: Commands are primarily for Debian Linux. 
 
 1. Pull this project or get the DockerFile via wget. 
