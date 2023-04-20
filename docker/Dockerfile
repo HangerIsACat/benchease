@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 # Install dependencies 
 RUN apt-get update 
 RUN apt-get install -y \ 
+  apt-utils \ 
   git \ 
   curl \ 
   wget 
