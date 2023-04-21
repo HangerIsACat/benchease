@@ -32,6 +32,3 @@ WORKDIR /home/benchease
 RUN ./gradlew build 
 
 EXPOSE 8080
-
-# To run container
-# docker container run --rm --detach --name benchease --publish 8080:8080 -it <docker image ID>
