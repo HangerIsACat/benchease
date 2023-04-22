@@ -9,7 +9,7 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 **Debug** (runs at port 5005): `./gradlew bootRun --debug-jvm`
 
 ### Sample API
-**Hello, world!** [http://localhost:8086/sample/hello](http://localhost:8086/sample/hello)
+**Hello, world!** [http://localhost:8181/sample/hello](http://localhost:8181/sample/hello)
 
 --- 
 
@@ -80,4 +80,21 @@ Or if the console session was ended, execute the command via exec.
 5. Use the container's console. 
 `docker exec -it <container ID or name> /bin/bash` 
 
-6. Try to execute the commands in the DockerFile manually, where it left off. 
+6. Do step 4 of "Checking the build". If a build exists, it can be cleared. 
+`./gradlew clean`
+
+7. Try to execute gradle build command in the DockerFile manually until all instructions are done. 
+
+#### In case this specific error is encountered: test task execution hanging (20230422)
+When this is encountered (usually), it's when Gradle executes the test task during build. Then it hangs. 
+
+1. Cancel the executing command. 
+
+2. Do the steps under the section "In case of any errors encountered while building the image", except for step 7.
+
+3. Once the container's console is accessible, build the project exclusing the test task. 
+`./gradlew build --exclude-task test`
+
+4. When the build succeeds, exit the container's console. 
+
+5. Run step 6 and 7 of the section "Docker container setup".
