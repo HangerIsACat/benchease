@@ -31,4 +31,4 @@ WORKDIR /home/benchease
 
 RUN ./gradlew build --exclude-task test
 
-EXPOSE 8086
+EXPOSE 8181
