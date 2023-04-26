@@ -1,5 +1,7 @@
 package codev.synergy.controller;
 
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleAPI {
 
   @GetMapping(path = "/hello")
-  public String helloWorld() {
-    return "Hello, World!"; 
+  public ResponseEntity<String> helloWorld() {
+    return ResponseEntity.ok("{message: 'Hello, World!'}"); 
   }
   
 }
