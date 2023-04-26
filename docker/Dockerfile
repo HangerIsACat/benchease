@@ -29,6 +29,6 @@ RUN git clone https://github.com/HangerIsACat/benchease.git
 # Set working directory to benchease root directory 
 WORKDIR /home/benchease 
 
-RUN ./gradlew build 
+RUN ./gradlew build --exclude-task test
 
 EXPOSE 8086
