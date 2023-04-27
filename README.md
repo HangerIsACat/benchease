@@ -27,8 +27,8 @@ _**Note**_: Commands are primarily for Debian Linux.
 3. To check if image is built. It'll be an image with no name but take note of the image ID. 
 `docker images` 
 
-4. Create a container out of the image, exposing port 8086 to map it to 8181 (or specify another port for other ports). 
-`docker container run --rm --detach --name benchease --publish 8181:8086 -it <docker image ID>` 
+4. Create a container out of the image, exposing port 8181 to map it to 8181 (or specify another port for other ports). 
+`docker container run --rm --detach --name benchease --publish 8181:8181 -it <docker image ID>` 
 
 _Optional note_: Gradle build can be checked by using the container's console and checking if the src code is built. Check out "Checking the Build" section
 
