@@ -8,8 +8,17 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 
 **Debug** (runs at port 5005): `./gradlew bootRun --debug-jvm`
 
+---
+
 ### Sample API
 **Hello, world!** [http://localhost:8181/sample/hello](http://localhost:8181/sample/hello)
+
+### Hot skills API
+**GET** http://localhost:8181/benchease/v1/hotskills
+<br />
+Returns the the top, most searched skills. 
+#### Optional parameter
+* _count_ - Determines the number of top skills returned. 
 
 --- 
 
