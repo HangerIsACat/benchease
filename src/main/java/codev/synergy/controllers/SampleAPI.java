@@ -1,4 +1,4 @@
-package codev.synergy.controller;
+package codev.synergy.controllers;
 
 import org.springframework.http.ResponseEntity;
 
