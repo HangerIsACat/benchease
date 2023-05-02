@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/benchease/v1/hotskills")
 public class HotSkillController {
 
-    private int DEFAULT_HOT_SKILL_COUNT = 5;
+    private int DEFAULT_HOT_SKILL_COUNT = 10;
 
     @GetMapping
     public ResponseEntity<List<Skill>> getHotSkills(@RequestParam Optional<Integer> count) {
@@ -28,6 +28,7 @@ public class HotSkillController {
             skill.incrementSearchCount();
             skill.incrementSearchCount();
             skill.incrementSearchCount();
+            skill.setApproved(true);
 
             skills.add(skill);
         }
