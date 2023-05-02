@@ -1,8 +1,6 @@
 package codev.synergy.controllers;
 
 import codev.synergy.entities.Skill;
-import codev.synergy.services.HotSkillService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
