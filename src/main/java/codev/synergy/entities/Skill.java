@@ -1,14 +1,24 @@
 package codev.synergy.entities;
 
+import java.util.Date;
+
 public class Skill extends Entity{
 
     private String title;
-    private boolean isApproved;
+    private boolean isApproved = false;
     private int searchCount = 0;
 
-    public Skill(Long id, String title) {
+    protected Skill() {}
+
+    public Skill(String id, String title) {
         this.setId(id);
         this.title = title;
+    }
+
+    public Skill(String id, String title, int searchCount, boolean isApproved) {
+        this(id, title);
+        this.searchCount = searchCount;
+        this.setApproved(isApproved);
     }
 
     public String getTitle() {

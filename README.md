@@ -16,7 +16,7 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 ### Hot skills API
 **GET** http://localhost:8181/benchease/v1/hotskills
 <br />
-Returns the the top, most searched skills. 
+Returns the top, most searched skills in descending order by search count. 
 #### Optional parameter
 * _count_ - Determines the number of top skills returned. 
 
