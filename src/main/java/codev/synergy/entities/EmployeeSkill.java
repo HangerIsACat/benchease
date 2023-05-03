@@ -1,9 +1,10 @@
 package codev.synergy.entities;
 
+
 public class EmployeeSkill extends Skill {
     private String type;
 
-    public EmployeeSkill(Long id, String title) {
+    public EmployeeSkill(String id, String title) {
         super(id, title);
     }
 
