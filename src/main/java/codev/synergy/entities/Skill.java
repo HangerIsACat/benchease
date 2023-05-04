@@ -10,9 +10,12 @@ public class Skill extends Entity{
 
     protected Skill() {}
 
-    public Skill(String id, String title) {
-        this.setId(id);
+    public Skill(String title) {
         this.title = title;
+    }
+    public Skill(String id, String title) {
+        this(title);
+        this.setId(id);
     }
 
     public Skill(String id, String title, int searchCount, boolean isApproved) {
