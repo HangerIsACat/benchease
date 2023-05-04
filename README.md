@@ -20,6 +20,13 @@ Returns the top, most searched skills in descending order by search count.
 #### Optional parameter
 * _count_ - Determines the number of top skills returned. 
 
+### Search employees by skill API
+**GET** http://localhost:8181/benchease/v1/search/employees/skill/{skillTitle}
+<br />
+Returns all employees with the specified skill title
+
+**NOTE**: This endpoint is a mock atm.
+
 --- 
 
 ## Docker container setup
