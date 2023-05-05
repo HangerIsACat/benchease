@@ -11,11 +11,12 @@ public class Employee extends Entity {
     private boolean isNew;
 
     public Employee(String empId, String firstName, String lastName) {
-        this.setId(empId);
+        this.setEmpId(empId);
         this.setFirstName(firstName);
         this.setLastName(lastName);
     }
     public Employee(
+        String id,
         String empId,
         String firstName,
         String middleName,
@@ -25,6 +26,7 @@ public class Employee extends Entity {
         boolean isNew) {
 
         this(empId, firstName, lastName);
+        this.setId(id);
         this.setMiddleName(middleName);
         this.setEmail(email);
         this.setStatus(status);
