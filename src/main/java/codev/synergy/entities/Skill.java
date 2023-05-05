@@ -24,6 +24,26 @@ public class Skill extends Entity{
         this.setApproved(isApproved);
     }
 
+    public Skill(
+        String id,
+        String title,
+        int searchCount,
+        boolean isApproved,
+        Date createdAt,
+        String createdBy,
+        Date updatedAt,
+        String updatedBy) {
+
+        this(id, title);
+        this.searchCount = searchCount;
+        this.setApproved(isApproved);
+
+        this.setCreatedAt(createdAt);
+        this.setCreatedBy(createdBy);
+        this.setUpdatedAt(updatedAt);
+        this.setUpdatedBy(updatedBy);
+    }
+
     public String getTitle() {
         return title;
     }
