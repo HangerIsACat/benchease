@@ -11,21 +11,22 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 ---
 
 ### Sample API
-**Hello, world!** [http://localhost:8181/sample/hello](http://localhost:8181/sample/hello)
+**Hello, world!** [http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/sample/hello](http://localhost:8181/sample/hello)
 
 ### Hot skills API
-**GET** http://localhost:8181/benchease/v1/hotskills
+**GET** http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/benchease/v1/hotskills
 <br />
 Returns the top, most searched skills in descending order by search count. 
 #### Optional parameter
 * _count_ - Determines the number of top skills returned. 
 
 ### Search employees by skill API
-**GET** http://localhost:8181/benchease/v1/search/employees/skill/{skillTitle}
+**GET** http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/benchease/v1/search/employees/skill
 <br />
-Returns all employees with the specified skill title
+Returns all employees with the specified skill title(s)
 
-**NOTE**: This endpoint is a mock atm.
+#### Required parameter
+* _skillTitles_ - Accepts a series of strings that acts as search parameters for skills
 
 --- 
 
