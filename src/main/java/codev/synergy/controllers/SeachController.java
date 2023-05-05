@@ -1,46 +1,46 @@
 package codev.synergy.controllers;
 
 import codev.synergy.entities.BenchEmployee;
-import codev.synergy.entities.EmployeeSkill;
+import codev.synergy.entities.Employee;
+import codev.synergy.entities.Skill;
 import codev.synergy.handlers.ResponseHandler;
+import codev.synergy.services.EmployeeService;
+import codev.synergy.services.SkillService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/benchease/v1/search")
 public class SeachController {
 
-    @GetMapping("/employees/skill/{skillTitle}")
-    public ResponseEntity<Map<String, Object>> searchEmployeesBySkill(@PathVariable String skillTitle) {
+    @Autowired
+    private SkillService skillService;
 
-        List<EmployeeSkill> skills = new ArrayList<>();
-        EmployeeSkill skill = new EmployeeSkill("1-skill-id", "sample-skill-1", "primary");
-        skill.setApproved(true);
-        skills.add(skill);
+    @Autowired
+    private EmployeeService employeeService;
 
-        BenchEmployee employee = new BenchEmployee(
-            "1-sample-id",
-            "sampleFirstName1",
-            "sampleMiddleName1",
-            "sampleLastName1",
-            "sample1@sample.com",
-            1,
-            false,
-            skills);
+    @GetMapping("/employees")
+    public ResponseEntity<Map<String, Object>> searchEmployeesBySkill(@RequestParam List<String> skillTitles) {
 
-        List<BenchEmployee> employees = Collections.singletonList(employee);
+        // Get existing skills
+        List<Skill> skills = skillService.getSkills(skillTitles);
 
-        ResponseHandler<List<BenchEmployee>> responseHandler =
-            new ResponseHandler<>(employees);
+        // TODO: Add search to DB for search count
+
+        // Get employees who has the skill
+        List<Employee> employees = employeeService.searchEmployeesBySkill(skills);
+
+        List<BenchEmployee> benchEmployees = employees.stream().map(
+            employee -> employeeService.convertToBenchEmployee(employee, skills)
+        ).collect(Collectors.toList());
+
+        ResponseHandler<List<BenchEmployee>> responseHandler = new ResponseHandler<>(benchEmployees);
 
         return responseHandler.buildResponse(ResponseHandler.MSG_SUCCESS, HttpStatus.OK);
 
