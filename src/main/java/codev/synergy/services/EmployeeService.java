@@ -1,6 +1,8 @@
 package codev.synergy.services;
 
-import codev.synergy.entities.*;
+import codev.synergy.entities.Employee;
+import codev.synergy.entities.BenchEmployee;
+import codev.synergy.entities.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -21,6 +23,7 @@ public class EmployeeService {
 
     @Autowired
     NamedParameterJdbcTemplate jdbcTemplate;
+
     public List<Employee> searchEmployeesBySkill(List<Skill> skills) {
 
         List<String> skillIDs = skills.stream().map(Skill::getId).collect(Collectors.toList());
