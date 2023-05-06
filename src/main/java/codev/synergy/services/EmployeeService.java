@@ -78,11 +78,11 @@ public class EmployeeService {
 
     }
 
-    public BenchEmployee convertToBenchEmployee(Employee employee, List<Skill> skills) {
+    public BenchEmployee convertToBenchEmployee(Employee employee) {
 
         BenchEmployee benchEmployee = new BenchEmployee(
             employee,
-            skillService.getEmployeeSkills(employee, skills)
+            skillService.getEmployeeSkills(employee)
         );
 
         benchEmployee.setCreatedAt(employee.getCreatedAt());
