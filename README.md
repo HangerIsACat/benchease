@@ -16,7 +16,7 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 ### Hot skills API
 **GET** http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/benchease/v1/hotskills
 <br />
-Returns the top, most searched skills in descending order by search count. 
+Returns the top, most searched skills in descending order by search count. Adds skill search to skill_searches table every search.
 #### Optional parameter
 * _count_ - Determines the number of top skills returned. 
 
