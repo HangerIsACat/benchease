@@ -87,12 +87,7 @@ public class SkillService {
 
     }
 
-    public List<EmployeeSkill> getEmployeeSkills(Employee employee, List<Skill> skills) {
-
-        List<String> skillIDs = skills.stream().map(Skill::getId).collect(Collectors.toList());
-        SqlParameterSource params = new MapSqlParameterSource()
-                .addValue("userID", employee.getId())
-                .addValue("skillIDs", skillIDs);
+    public List<EmployeeSkill> getEmployeeSkills(Employee employee) {
 
         List<EmployeeSkill> skillsEmp = jdbcTemplate.query(
         "SELECT " +
@@ -106,11 +101,10 @@ public class SkillService {
                 "a.updated_at, " +
                 "a.updated_by " +
                 "FROM skills a " +
-                "INNER JOIN user_skills b " +
+            "INNER JOIN user_skills b " +
                 "ON a.id = b.skill_id " +
-                "WHERE b.user_id = :userID " +
-                "AND b.skill_id IN (:skillIDs);",
-            params,
+            "WHERE b.user_id = :userID;",
+            new MapSqlParameterSource("userID", employee.getId()),
             (rs, rowNum) -> new EmployeeSkill(
                 rs.getString("id"),
                 rs.getString("title"),
