@@ -45,7 +45,7 @@ public class SeachController {
         List<Employee> employees = employeeService.searchEmployeesBySkill(skills);
 
         List<BenchEmployee> benchEmployees = employees.stream().map(
-            employee -> employeeService.convertToBenchEmployee(employee, skills)
+            employee -> employeeService.convertToBenchEmployee(employee)
         ).collect(Collectors.toList());
 
         ResponseHandler<List<BenchEmployee>> responseHandler = new ResponseHandler<>(benchEmployees);
