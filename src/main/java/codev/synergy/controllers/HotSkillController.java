@@ -6,6 +6,7 @@ import codev.synergy.services.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/benchease/v1/hotskills")
 public class HotSkillController {
@@ -30,7 +32,10 @@ public class HotSkillController {
             ResponseHandler<List<Skill>> responseHandler
                 = new ResponseHandler<>(serviceSkill.getTopSkills(noOfSkills));
 
-            return responseHandler.buildResponse(ResponseHandler.MSG_SUCCESS, HttpStatus.OK);
+            ResponseEntity<Map<String, Object>> response = responseHandler.buildResponse(ResponseHandler.MSG_SUCCESS, HttpStatus.OK);
+            // response.getHeaders().add("Access-Control-Allow-Origin", "/**");
+
+            return response;
 
         } catch(Exception e) {
             return new ResponseHandler<>(e)
