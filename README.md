@@ -11,17 +11,17 @@ Part of CoDev synergy project, 202304. This includes REST API for search and get
 ---
 
 ### Sample API
-**Hello, world!** [http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/sample/hello](http://localhost:8181/sample/hello)
+**Hello, world!** [http://34.83.61.181:8181/sample/hello](http://34.83.61.181:8181/sample/hello)
 
 ### Hot skills API
-**GET** http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/benchease/v1/hotskills
+**GET** [http://34.83.61.181:8181/benchease/v1/hotskills](http://34.83.61.181:8181/benchease/v1/hotskills)
 <br />
 Returns the top, most searched skills in descending order by search count. Adds skill search to skill_searches table every search.
 #### Optional parameter
 * _count_ - Determines the number of top skills returned. 
 
 ### Search employees by skill API
-**GET** http://ec2-3-1-102-218.ap-southeast-1.compute.amazonaws.com:8181/benchease/v1/search/employees
+**GET** [http://34.83.61.181:8181/benchease/v1/search/employees](http://34.83.61.181:8181/benchease/v1/search/employees)
 <br />
 Returns all employees with the specified skill title(s)
 
@@ -33,7 +33,7 @@ Returns all employees with the specified skill title(s)
 ## Docker container setup
 To build a docker image from BenchEase's DockerFile and run its container... 
 
-_**Note**_: Commands are primarily for Debian Linux. 
+_**Note**_: Commands are primarily for Debian Linux. Also, if Docker isn't installed yet, follow these instructions [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
 
 1. Pull this project or get the DockerFile via wget. 
 `wget https://raw.githubusercontent.com/HangerIsACat/benchease/main/docker/Dockerfile` 
@@ -115,3 +115,25 @@ When this is encountered (usually), it's when Gradle executes the test task duri
 4. When the build succeeds, exit the container's console. 
 
 5. Run step 6 and 7 of the section "Docker container setup".
+
+---
+
+## How to deploy changes
+
+1. Connect to Docker container via bash. 
+`docker exec -it benchease /bin/bash`
+
+2. Inside the container, stop the gradle process. 
+`./gradlew --stop`
+
+3. Pull the updates.
+`git pull`
+
+4. Disconnect from the container.
+`exit`
+
+5. Run BenchEase application as a detached process in the container. 
+`docker exec --detach benchease ./gradlew bootRun`
+
+6. Run sample API after a few minutes to check. 
+
